@@ -16,7 +16,7 @@ function Todo() {
       return;
     }
    
-    const newTodo = {
+    let newTodo = {
       id: Date.now(),
       text: inputText,
       completed: false,
@@ -47,7 +47,7 @@ function Todo() {
     setTodos([...updatedTodos, todoToMove]);
   };
   const resetTodos = () => {
-    setTodos([]);
+    setTodos([...initialTodos]);
   };
   return (
     <div className="App">
@@ -66,7 +66,7 @@ function Todo() {
         </Button>
       </Box>
       <div className="todo-list">
-      {todos
+      { todos
           .sort((a, b) => {
             if (a.completed !== b.completed) {
               return a.completed ? 1 : -1;
