@@ -5,11 +5,11 @@ import { Button } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 
 function Todo() {
-    const initialTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    const initialTodos = JSON.parse(sessionStorage.getItem("todos")) || [];
   const [todos, setTodos] = useState(initialTodos);
   const [inputText, setInputText] = useState("");
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    sessionStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
   const addTodo = () => {
     if (inputText.trim() === "") {
@@ -47,11 +47,11 @@ function Todo() {
     setTodos([...updatedTodos, todoToMove]);
   };
   const resetTodos = () => {
-    setTodos([...initialTodos]);
+    setTodos([]);
   };
   return (
     <div className="App">
-      <h1>Todo App</h1>
+      <h1>Todo App</h1> <br />
       <Box className="Box">
         <Input
           type="text"
@@ -66,14 +66,14 @@ function Todo() {
         </Button>
       </Box>
       <div className="todo-list">
-      { todos
-          .sort((a, b) => {
+      { initialTodos ? todos
+          ?.sort((a, b) => {
             if (a.completed !== b.completed) {
               return a.completed ? 1 : -1;
             }
             return b.createdAt - a.createdAt;
           })
-          .map((todo) => (
+          ?.map((todo) => (
             <div
               key={todo.id}
               className={`todo-card ${todo.completed ? 'completed' : ''}`}
@@ -83,7 +83,7 @@ function Todo() {
             >
               <p>{todo.text}</p>
           </div>
-        ))}
+        )):""}
       </div>
     </div>
   );

@@ -13,8 +13,8 @@
 .reset-button {
   position: absolute;
   right: 10px;
-  background-color: #dc3545;
-  margin-left: 30px;
+ background-color: red;
+  margin-left: 20px;
 }
 
 .reset-button:hover {
@@ -27,8 +27,9 @@
   width: 200px;
   text-align: center;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(228, 10, 10, 0.2);
   cursor: pointer;
+  margin-top: 5px;
 }
 .todo-card.completed {
   background-color: #d4edda;
@@ -49,9 +50,9 @@ Button {
   border-radius: 5px; 
 }
 
-Button:hover {
+/* Button:hover {
   background-color: #0056b3;
-}
+} */
 
 .Box{
   width:30%;
